@@ -1,9 +1,7 @@
-package com.example.hb01onetooneuni.entaties;
+package com.example.hb01onetomany.entaties;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "instructor")
@@ -25,23 +23,11 @@ public class Instructor {
     @JsonIgnoreProperties("instructor")
     public InstructorDetails  instructorDetails;
 
-    @OneToMany(mappedBy = "instructor",
-               fetch = FetchType.EAGER,
-               cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    private List<Course> courses;
     public Instructor(){}
     public Instructor(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
     }
 
     public long getId() {
@@ -92,12 +78,5 @@ public class Instructor {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
-    }
-
-    public void add(Course tempCourse){
-        if(courses ==null)
-            this.courses =new ArrayList<>();
-        courses.add(tempCourse);
-        tempCourse.setInstructor(this);
     }
 }
