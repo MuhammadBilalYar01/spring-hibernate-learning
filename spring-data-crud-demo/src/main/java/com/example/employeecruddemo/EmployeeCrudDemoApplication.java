@@ -1,12 +1,13 @@
-package com.example.springcrmrestdemo;
+package com.example.employeecruddemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringCrmRestDemoApplication {
+public class EmployeeCrudDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCrmRestDemoApplication.class, args);
+        SpringApplication.run(EmployeeCrudDemoApplication.class, args);
     }
+
 }
